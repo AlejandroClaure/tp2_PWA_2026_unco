@@ -1,4 +1,58 @@
 ```markdown
+# 🎮 Steam UI — Catálogo de Juegos
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+</p>
+
+<p align="center">
+  Aplicación web estilo <strong>Steam</strong> desarrollada con React + Vite + Tailwind v4
+</p>
+
+---
+
+## 📚 Información académica
+
+**Trabajo Práctico N°2 — Programación Web Avanzada** **Facultad de Informática — Universidad Nacional del Comahue — 2026**
+
+---
+
+## 👥 Integrantes
+
+| Nombre | Email | Rol |
+| :--- | :--- | :--- |
+| **Joaquín Vargas** | joaquinivl95@gmail.com | Frontend |
+| **Gastón Llaupe** | gaston.llaupe@est.fi.uncoma.edu.ar | Frontend |
+| **Alejandro Santos Claure** | alejandroclaure01@gmail.com | PM / Scrum Master |
+
+---
+
+## 🧾 Descripción
+
+Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permite explorar juegos, visualizar su información detallada y gestionar una lista de favoritos.
+
+---
+
+## ✨ Funcionalidades
+
+- 📦 **Listado de juegos** desde API (MockAPI).
+- 🔎 **Búsqueda** en tiempo real.
+- 📄 **Vista de detalle** por cada título.
+- ⭐ **Sistema de favoritos** con persistencia en `localStorage`.
+- 🎨 **Interfaz estilo Steam** (Dark mode nativo).
+- ⏳ **Feedback visual:** Estados de carga y pantallas vacías.
+
+---
+
+## 🖼️ Capturas de pantalla
+
+> ⚠️ *Agregar imágenes del proyecto una vez finalizado.*
+
+| 🏠 Home | 📄 Detalle | ⭐ Favoritos |
+| :---: | :---: | :---: |
+| ![Home](./screenshots/home.png) | ![Details](./screenshots/details.png) | ![Favorites](./screenshots/favorites.png) |
 ---
 
 ## 🧠 Modelo de Datos
