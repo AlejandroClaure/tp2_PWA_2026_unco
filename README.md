@@ -9,17 +9,17 @@
 ## 📚 Información académica
 
 **Trabajo Práctico N°2 — Programación Web Avanzada**  
-Facultad de Informática — Universidad Nacional del Comahue — 2026  
+Facultad de Informática — Universidad Nacional del Comahue — 2026
 
 ---
 
 ## 👥 Integrantes
 
-| Nombre | Email | Rol |
-|--------|------|------|
-| Joaquín Vargas | joaquinivl95@gmail.com | Frontend |
-| Gastón Llaupe | gaston.llaupe@est.fi.uncoma.edu.ar | Frontend |
-| Alejandro Santos Claure | alejandroclaure01@gmail.com | PM / Scrum Master |
+| Nombre                  | Email                              | Rol               |
+| ----------------------- | ---------------------------------- | ----------------- |
+| Joaquín Vargas          | joaquinivl95@gmail.com             | Frontend          |
+| Gastón Llaupe           | gaston.llaupe@est.fi.uncoma.edu.ar | Frontend          |
+| Alejandro Santos Claure | alejandroclaure01@gmail.com        | PM / Scrum Master |
 
 ---
 
@@ -48,12 +48,15 @@ Permite explorar juegos, visualizar su información detallada y gestionar una li
 > ⚠️ Agregar imágenes del proyecto una vez finalizado
 
 ### 🏠 Home
+
 ![Home Screenshot](./screenshots/home.png)
 
 ### 📄 Detalle
+
 ![Details Screenshot](./screenshots/details.png)
 
 ### ⭐ Favoritos
+
 ![Favorites Screenshot](./screenshots/favorites.png)
 
 ---
@@ -74,6 +77,7 @@ Permite explorar juegos, visualizar su información detallada y gestionar una li
   "descripcion": "texto",
   "developer": "CD Projekt Red"
 }
+
 ⚙️ Stack tecnológico
 Tecnología	Uso
 React	UI
@@ -140,6 +144,8 @@ develop
  ├── develop/feat-1-home
  ├── develop/feat-2-details
  └── ...
+
+
 🔁 Flujo de trabajo
 git checkout develop
 git pull origin develop
@@ -196,3 +202,4 @@ simular un entorno profesional real
 🍕
 
 Si alguien rompe develop, paga las pizzas.
+```
