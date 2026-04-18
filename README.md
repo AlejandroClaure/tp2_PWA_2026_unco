@@ -1,5 +1,7 @@
 ```markdown
 
+---
+
 # 🎮 Steam UI — Catálogo de Juegos
 
 <p align="center">
@@ -60,6 +62,24 @@ Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permi
 
 ---
 
+## 🧠 Modelo de Datos
+
+La estructura de los objetos que consumimos desde la API sigue este formato estándar:
+
+```json
+{
+  "id": "1",
+  "titulo": "Cyberpunk 2077",
+  "genero": "RPG",
+  "precio": 59.99,
+  "imagen": "URL",
+  "rating": 4.2,
+  "isFavorite": false,
+  "anio": 2020,
+  "plataformas": "PC, PS5, Xbox",
+  "descripcion": "Texto descriptivo del juego...",
+  "developer": "CD Projekt Red"
+}
 ## 🧠 Modelo de Datos
 
 La estructura de los objetos que consumimos desde la API sigue este formato estándar:
