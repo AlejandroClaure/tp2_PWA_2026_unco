@@ -184,7 +184,7 @@ Para mantener la rama `develop` estable y evitar conflictos (y pagar las pizzas 
 
 2. **Crear una nueva rama para tu tarea:**
    ```bash
-   git checkout -b develop/mi-tarea
+   git checkout -b comp-1-nombrecomp
    ```
 
 3. **Guardar cambios (commit):**
