@@ -1,7 +1,3 @@
-¡Tenés razón! Lo que pasó es que en el bloque anterior, después del JSON de "Modelo de datos", el texto se desconfiguró y perdió todo el formato de Markdown. Se mezcló el código con el texto plano y por eso se ve como un "bloque" difícil de leer.
-
-Acá te lo paso **corregido y bien estructurado**, con separaciones claras, negritas para que resalte lo importante y una estética mucho más limpia para GitHub.
-
 ```markdown
 ---
 
