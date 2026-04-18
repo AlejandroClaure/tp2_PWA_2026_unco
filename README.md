@@ -1,67 +1,13 @@
-# 🎮 Steam UI — Catálogo de Juegos
+¡Tenés razón! Lo que pasó es que en el bloque anterior, después del JSON de "Modelo de datos", el texto se desconfiguró y perdió todo el formato de Markdown. Se mezcló el código con el texto plano y por eso se ve como un "bloque" difícil de leer.
 
-<p align="center">
-  Aplicación web estilo <strong>Steam</strong> desarrollada con React + Vite + Tailwind v4
-</p>
+Acá te lo paso **corregido y bien estructurado**, con separaciones claras, negritas para que resalte lo importante y una estética mucho más limpia para GitHub.
 
+```markdown
 ---
 
-## 📚 Información académica
+## 🧠 Modelo de Datos
 
-**Trabajo Práctico N°2 — Programación Web Avanzada**  
-Facultad de Informática — Universidad Nacional del Comahue — 2026
-
----
-
-## 👥 Integrantes
-
-| Nombre                  | Email                              | Rol               |
-| ----------------------- | ---------------------------------- | ----------------- |
-| Joaquín Vargas          | joaquinivl95@gmail.com             | Frontend          |
-| Gastón Llaupe           | gaston.llaupe@est.fi.uncoma.edu.ar | Frontend          |
-| Alejandro Santos Claure | alejandroclaure01@gmail.com        | PM / Scrum Master |
-
----
-
-## 🧾 Descripción
-
-Aplicación web que simula un catálogo de videojuegos inspirado en Steam.
-
-Permite explorar juegos, visualizar su información detallada y gestionar una lista de favoritos.
-
----
-
-## ✨ Funcionalidades
-
-- 📦 Listado de juegos desde API (MockAPI)
-- 🔎 Búsqueda en tiempo real
-- 📄 Vista de detalle por juego
-- ⭐ Sistema de favoritos (persistencia en localStorage)
-- 🎨 Interfaz estilo Steam (dark mode)
-- ⏳ Estados de carga (loading)
-- 📭 Estados vacíos (empty state)
-
----
-
-## 🖼️ Capturas de pantalla
-
-> ⚠️ Agregar imágenes del proyecto una vez finalizado
-
-### 🏠 Home
-
-![Home Screenshot](./screenshots/home.png)
-
-### 📄 Detalle
-
-![Details Screenshot](./screenshots/details.png)
-
-### ⭐ Favoritos
-
-![Favorites Screenshot](./screenshots/favorites.png)
-
----
-
-## 🧠 Modelo de datos
+La estructura de los objetos que consumimos desde la API sigue este formato estándar:
 
 ```json
 {
@@ -73,133 +19,145 @@ Permite explorar juegos, visualizar su información detallada y gestionar una li
   "rating": 4.2,
   "isFavorite": false,
   "anio": 2020,
-  "plataformas": "PC,PS5,Xbox",
-  "descripcion": "texto",
+  "plataformas": "PC, PS5, Xbox",
+  "descripcion": "Texto descriptivo del juego...",
   "developer": "CD Projekt Red"
 }
+```
 
-⚙️ Stack tecnológico
-Tecnología	Uso
-React	UI
-Vite	Entorno de desarrollo
-Tailwind CSS v4	Estilos
-React Router	Navegación
-MockAPI	Backend fake
-localStorage	Persistencia
-🎨 Paleta de colores (Steam-like)
-#1b2838 → Fondo principal
-#171a21 → Fondo secundario
-#2a475e → Cards
-#66c0f4 → Accent
-#1a9fff → Hover
-#c7d5e0 → Texto principal
-#8f98a0 → Texto secundario
-🌐 API
-https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos
-🚀 Instalación
-# Clonar repositorio
-git clone https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git
+---
 
-# Entrar al proyecto
-cd tp2_PWA_2026_unco
+## ⚙️ Stack Tecnológico
 
-# Cambiar a develop
-git checkout develop
+| Tecnología | Uso / Propósito |
+| :--- | :--- |
+| **React** | Biblioteca principal para la interfaz de usuario |
+| **Vite** | Tooling y entorno de desarrollo ultra rápido |
+| **Tailwind CSS v4** | Estilado mediante utilidades de última generación |
+| **React Router** | Manejo de navegación y rutas de la SPA |
+| **MockAPI** | Backend simulado para el consumo de datos |
+| **localStorage** | Persistencia local para la lista de favoritos |
 
-# Instalar dependencias
-npm install
+---
 
-# Ejecutar proyecto
-npm run dev
+## 🎨 Paleta de Colores (Steam-like)
 
-👉 App disponible en:
-http://localhost:5173
+Para lograr la estética característica de la plataforma, utilizamos los siguientes códigos hexadecimales:
 
-📁 Estructura del proyecto
+* 🔵 **Fondo Principal:** `#1b2838`
+* 🌑 **Fondo Secundario:** `#171a21`
+* 📂 **Tarjetas (Cards):** `#2a475e`
+* 💎 **Acento (Primary):** `#66c0f4`
+* ✨ **Hover:** `#1a9fff`
+* ⚪ **Texto Principal:** `#c7d5e0`
+* 🔘 **Texto Secundario:** `#8f98a0`
+
+---
+
+## 🌐 API Reference
+
+Los datos se obtienen del siguiente endpoint:
+`https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos`
+
+---
+
+## 🚀 Instalación y Setup
+
+Para poner en marcha el proyecto localmente, seguí estos pasos:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git](https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git)
+   ```
+
+2. **Entrar al directorio:**
+   ```bash
+   cd tp2_PWA_2026_unco
+   ```
+
+3. **Cambiar a la rama de desarrollo:**
+   ```bash
+   git checkout develop
+   ```
+
+4. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+5. **Ejecutar el proyecto:**
+   ```bash
+   npm run dev
+   ```
+
+👉 *La app estará disponible en: `http://localhost:5173`*
+
+---
+
+## 📁 Estructura del Proyecto
+
+```text
 src/
- ├── components/
- │    ├── GameCard
- │    ├── GameList
- │    ├── GameDetailCard
- │    ├── FavoriteButton
- │    ├── Header
- │    ├── Footer
- │    └── SearchBar
- │
- ├── pages/
- │    ├── Home
- │    ├── Details
- │    ├── Favorites
- │    └── NotFound
- │
- ├── const/
- │    └── routes.js
- │
- ├── main.jsx
- └── index.css
-🌿 Estrategia de Branches
-develop
- ├── develop/comp-1-gamelist
- ├── develop/comp-2-gamecard
- ├── develop/feat-1-home
- ├── develop/feat-2-details
- └── ...
+ ├── components/       # Componentes (GameCard, List, SearchBar, etc.)
+ ├── pages/            # Vistas (Home, Details, Favorites, NotFound)
+ ├── const/            # Definición de rutas (routes.js)
+ ├── main.jsx          # Punto de entrada de React
+ └── index.css         # Directivas de Tailwind
+```
 
+---
 
-🔁 Flujo de trabajo
-git checkout develop
-git pull origin develop
+## 🌿 Estrategia de Branches
 
-git checkout -b develop/comp-1-gamelist
+Mantenemos un flujo de trabajo organizado mediante ramas descriptivas:
 
-git add .
-git commit -m "feat: GameList component"
+* `develop` (Rama base de integración)
+* `develop/comp-name` (Desarrollo de componentes)
+* `develop/feat-name` (Nuevas funcionalidades)
 
-git push origin develop/comp-1-gamelist
-🔀 Pull Requests
-Base: develop
-1 aprobación obligatoria
-No mergear sin revisión del PM
-📏 Reglas del equipo
-❌ No push directo a develop
-✔ Todo mediante Pull Request
-✔ Un PR por tarea
-✔ Tailwind obligatorio
-✔ Código limpio y consistente
-🧠 Convención de commits
-feat: nueva funcionalidad
-fix: corrección de bug
-style: cambios visuales
-refactor: mejoras internas
-docs: documentación
-💾 Favoritos
+---
+
+## 🔁 Flujo de Trabajo (Git Workflow)
+
+1. Sincronizar local: `git pull origin develop`
+2. Crear rama: `git checkout -b develop/mi-tarea`
+3. Commitear cambios: `git commit -m "feat: descripción corta"`
+4. Subir y crear PR: `git push origin develop/mi-tarea`
+
+---
+
+## 📏 Reglas del Equipo
+
+* ❌ **No push directo a develop:** Todo cambio debe pasar por un Pull Request.
+* ✔ **Aprobación:** Se requiere al menos 1 aprobación para mergear.
+* ✔ **Atomicidad:** Un PR por cada tarea específica.
+* ✔ **Estilos:** Uso obligatorio de **Tailwind CSS**.
+
+---
+
+## 💾 Gestión de Favoritos
+
+La persistencia se maneja de forma local para evitar llamadas innecesarias al servidor:
+```javascript
 localStorage.setItem("favorites", JSON.stringify([...]))
-⚠️ Consideraciones
-Precio 0 → mostrar "Free to Play"
-Rating escala 0–5
-No modificar nombres del modelo (titulo, no title)
-No usar CSS externo (solo Tailwind)
-🚧 Estado del proyecto
- Setup inicial
- Routing
- Listado
- Details
- Favoritos
- Búsqueda
-🚀 Futuras mejoras
-Scroll infinito
-Skeleton loading
-Animaciones
-Dark / Light mode
-🧠 Nota del PM
+```
 
-Este proyecto está organizado para:
+---
 
-trabajar en paralelo
-evitar conflictos
-mantener consistencia visual
-simular un entorno profesional real
-🍕
+## 🚧 Estado del Proyecto
 
-Si alguien rompe develop, paga las pizzas.
+- [x] Setup inicial
+- [x] Routing
+- [x] Listado de juegos
+- [ ] Vista de detalles
+- [ ] Sistema de favoritos
+- [ ] Buscador en tiempo real
+
+---
+
+## 🍕 Nota del PM
+
+> **"Si alguien rompe develop, paga las pizzas."** > Proyecto enfocado en consistencia visual y trabajo colaborativo profesional.
+
+---
 ```
