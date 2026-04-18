@@ -1,4 +1,5 @@
 ```markdown
+
 # 🎮 Steam UI — Catálogo de Juegos
 
 <p align="center">
@@ -53,6 +54,10 @@ Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permi
 | 🏠 Home | 📄 Detalle | ⭐ Favoritos |
 | :---: | :---: | :---: |
 | ![Home](./screenshots/home.png) | ![Details](./screenshots/details.png) | ![Favorites](./screenshots/favorites.png) |
+
+---
+
+
 ---
 
 ## 🧠 Modelo de Datos
