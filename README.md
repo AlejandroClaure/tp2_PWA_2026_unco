@@ -1,7 +1,3 @@
-```markdown
-
----
-
 # 🎮 Steam UI — Catálogo de Juegos
 
 <p align="center">
@@ -80,24 +76,7 @@ La estructura de los objetos que consumimos desde la API sigue este formato est�
   "descripcion": "Texto descriptivo del juego...",
   "developer": "CD Projekt Red"
 }
-## 🧠 Modelo de Datos
 
-La estructura de los objetos que consumimos desde la API sigue este formato estándar:
-
-```json
-{
-  "id": "1",
-  "titulo": "Cyberpunk 2077",
-  "genero": "RPG",
-  "precio": 59.99,
-  "imagen": "URL",
-  "rating": 4.2,
-  "isFavorite": false,
-  "anio": 2020,
-  "plataformas": "PC, PS5, Xbox",
-  "descripcion": "Texto descriptivo del juego...",
-  "developer": "CD Projekt Red"
-}
 ```
 
 ---
@@ -192,12 +171,38 @@ Mantenemos un flujo de trabajo organizado mediante ramas descriptivas:
 
 ---
 
-## 🔁 Flujo de Trabajo (Git Workflow)
 
-1. Sincronizar local: `git pull origin develop`
-2. Crear rama: `git checkout -b develop/mi-tarea`
-3. Commitear cambios: `git commit -m "feat: descripción corta"`
-4. Subir y crear PR: `git push origin develop/mi-tarea`
+## 🚀 Flujo de Trabajo (Git Workflow)
+
+Para mantener la rama `develop` estable y evitar conflictos (y pagar las pizzas 🍕), seguí estos pasos:
+
+1. **Sincronizar con develop:**
+   ```bash
+   git checkout develop
+   git pull origin develop
+   ```
+
+2. **Crear una nueva rama para tu tarea:**
+   ```bash
+   git checkout -b develop/mi-tarea
+   ```
+
+3. **Guardar cambios (commit):**
+   ```bash
+   git add .
+   git commit -m "feat: descripción"
+   ```
+
+4. **Actualizar antes de subir (MUY IMPORTANTE):**
+   ```bash
+   git pull origin develop
+   ```
+
+5. **Subir la rama al repositorio:**
+   ```bash
+   git push origin develop/mi-tarea
+   ```
+
 
 ---
 
@@ -235,4 +240,3 @@ localStorage.setItem("favorites", JSON.stringify([...]))
 > **"Si alguien rompe develop, paga las pizzas."** > Proyecto enfocado en consistencia visual y trabajo colaborativo profesional.
 
 ---
-```
