@@ -1,28 +1,35 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import './index.css';
+import "./index.css";
+
 import { Home } from "./pages/Home/Home.jsx";
 import Details from "./pages/Details/Details.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import { Routes } from "./const/routes.js";
+import { Layout } from "./components/Layout/Layout.jsx";
 
 const router = createBrowserRouter([
   {
-    path: Routes.home,
-    element: <Home />,
-  },
-  {
-    path: Routes.details,
-    element: <Details />,
-  },
-  {
-    path: Routes.favorites,
-    element: <Favorites />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
+    element: <Layout />,
+    children: [
+      {
+        path: Routes.home,
+        element: <Home />,
+      },
+      {
+        path: Routes.details,
+        element: <Details />,
+      },
+      {
+        path: Routes.favorites,
+        element: <Favorites />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
   },
 ]);
 
