@@ -1,1 +1,4 @@
 
+function Footer() {}
+
+export { Footer };
