@@ -26,9 +26,7 @@ function Header({ onSearch }) {
 
         {/* SEARCH */}
         <div className="flex-1 max-w-md mx-6">
-          <div className="bg-[#2a475e] rounded-md px-3 py-1">
             <SearchBar onSearch={onSearch} />
-          </div>
         </div>
 
         {/* DERECHA */}
