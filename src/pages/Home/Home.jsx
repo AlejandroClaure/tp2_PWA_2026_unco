@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../const/routes.js";
+import GameDetailCard from "../../components/GameDetailCard/GameDetailCard.jsx";
 //import { useState, useEffect } from "react";
 //import { mainData } from "../data/mainData";
 //import styles from "./Home.module.css";
@@ -20,6 +21,7 @@ function Home() {
       >
         "Details"
       </button>
+      <GameDetailCard></GameDetailCard>
     </>
   );
 }
