@@ -7,51 +7,45 @@ import {
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa";
-
+import { useState } from "react";
+import { NosotrosModal } from "../NosotrosModal/NosotrosModal";
 
 function Footer() {
-
+  const [open, setOpen] = useState(false);
   return (
     <footer className="bg-[#171a21] border-t border-[#2a475e] mt-10">
       <div className="max-w-7xl mx-auto px-4 py-8 text-[#8f98a0] text-sm">
-        
         {/* GRID PRINCIPAL */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left items-center">
-          
           {/* LOGO + DESC */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h2 className="text-[#66c0f4] font-semibold text-lg">
-              EsteamApp
-            </h2>
+            <h2 className="text-[#66c0f4] font-semibold text-lg">EsteamApp</h2>
 
             <p>
-              Plataforma de exploración de videojuegos. Descubrí, explorá y guardá tus favoritos.
+              Plataforma de exploración de videojuegos. Descubrí, explorá y
+              guardá tus favoritos.
             </p>
-
-            
+            <button
+              onClick={() => setOpen(true)}
+              className="mt-4 text-[#c7d5e0] hover:text-[#66c0f4] transition"
+            >
+              Sobre nosotros
+            </button>
           </div>
 
           {/* NAVEGACIÓN */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">
-              Navegación
-            </h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">Navegación</h3>
 
             <ul className="space-y-2">
               <li>
-                <Link
-                  to={Routes.home}
-                  className="hover:text-[#66c0f4]"
-                >
+                <Link to={Routes.home} className="hover:text-[#66c0f4]">
                   Inicio
                 </Link>
               </li>
 
               <li>
-                <Link
-                  to={Routes.favorites}
-                  className="hover:text-[#66c0f4]"
-                >
+                <Link to={Routes.favorites} className="hover:text-[#66c0f4]">
                   Favoritos
                 </Link>
               </li>
@@ -60,9 +54,7 @@ function Footer() {
 
           {/* CONTACTO */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">
-              Contacto
-            </h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">Contacto</h3>
 
             <ul className="space-y-2">
               <li>
@@ -89,9 +81,7 @@ function Footer() {
 
           {/* REDES */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">
-              Redes
-            </h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">Redes</h3>
 
             <ul className="space-y-2">
               <li>
@@ -133,6 +123,9 @@ function Footer() {
           </div>
         </div>
 
+        {/* MODAL */}
+        <NosotrosModal isOpen={open} onClose={() => setOpen(false)} />
+
         {/* DIVIDER */}
         <div className="border-t border-[#2a475e] my-6" />
 
@@ -141,8 +134,6 @@ function Footer() {
           © 2026 EsteamApp — Todos los derechos reservados
         </div>
       </div>
-
-      
     </footer>
   );
 }
