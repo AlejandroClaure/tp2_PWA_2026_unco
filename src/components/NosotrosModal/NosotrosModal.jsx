@@ -20,7 +20,7 @@ function NosotrosModal({ isOpen, onClose }) {
 
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+  },);
 
   if (!isOpen && !isClosing) return null;
 
