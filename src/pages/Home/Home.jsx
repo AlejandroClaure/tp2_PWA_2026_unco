@@ -21,7 +21,7 @@ function Home() {
       >
         "Details"
       </button>
-      <GameDetailCard id={2}></GameDetailCard>
+      <GameDetailCard id={1}></GameDetailCard>
     </>
   );
 }
