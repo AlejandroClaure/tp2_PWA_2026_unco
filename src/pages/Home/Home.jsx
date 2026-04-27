@@ -1,28 +1,29 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Routes } from "../../const/routes.js";
-import GameDetailCard from "../../components/GameDetailCard/GameDetailCard.jsx";
-//import { useState, useEffect } from "react";
-//import { mainData } from "../data/mainData";
-//import styles from "./Home.module.css";
+import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+import { getGames } from "../../services/gameApi";
+import { GameList } from "../../components/GameList/GameList";
 
 function Home() {
-  const navigation = useNavigate();
+  const { search } = useOutletContext();
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    getGames(1, search)
+      .then(setGames)
+      .finally(() => setLoading(false));
+  }, [search]);
+
   return (
-    <>
-    <div className="bg-red-500 text-white p-10">
-  FUNCIONA TAILWIND
-</div>
-      <h1>Details</h1>
-      <button
-        onClick={() => {
-          navigation(Routes.details);
-        }}
-      >
-        "Details"
-      </button>
-      <GameDetailCard id={1}></GameDetailCard>
-    </>
+    <div className="max-w-7xl mx-auto px-4 py-6">
+      {loading ? (
+        <p className="text-[#8f98a0] text-center py-12">Cargando juegos...</p>
+      ) : (
+        <GameList games={games} />
+      )}
+    </div>
   );
 }
-export { Home};
+
+export { Home };
