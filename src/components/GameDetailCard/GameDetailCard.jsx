@@ -1,28 +1,55 @@
 import { useEffect, useState } from "react";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 function GameDetailCard({ id }) {
   const [game, setGame] = useState(null);
 
-  const obtenerDatos = async () => {
-    try {
-      const res = await fetch(
-        `https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos/${id}`
-      );
-
-      if (!res.ok) throw new Error("Error al traer el juego");
-
-      const data = await res.json();
-      setGame(data);
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
-
   useEffect(() => {
-    obtenerDatos();
+    if (!id) return;
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos/${id}`
+        );
+
+        if (!res.ok) throw new Error("Error al traer el juego");
+
+        const data = await res.json();
+        setGame(data);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
-  if (!game) return <p className="text-white">Cargando...</p>;
+
+  const [favoritos, setFavoritos] = useState(() => {
+    const data = localStorage.getItem("favoritos");
+    return data ? JSON.parse(data) : [];
+  });
+
+  useEffect(() => {
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }, [favoritos]);
+
+  const handleFav = (id) => {
+  setFavoritos((prev) => {
+    if (prev.includes(id)) {
+      return prev.filter((f) => f !== id);
+    } else {
+      return [...prev, id];
+    }
+  });
+  };
+
+  const esFavorito = favoritos.includes(id);
+
+  if (!game) return <div className="min-h-screen bg-[#0f172a] flex items-center justify-center">
+      <p className="text-gray-300 text-xl">Cargando...</p>
+    </div>;
 
   return (
     <div className="min-h-screen bg-[#0f172a] flex justify-center items-start py-10">
@@ -78,6 +105,12 @@ function GameDetailCard({ id }) {
             <span className="text-white font-medium">Developer:</span>{" "}
             {game.developer}
           </p>
+          <div className="mt-6 flex justify-center"><FavoriteButton 
+          id={id} 
+          onFav={handleFav} 
+          esFavorito={esFavorito}
+          />
+          </div>
         </div>
       </div>
     </div>
