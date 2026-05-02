@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
-import { useFavorites } from "../../hooks/useFavorites";
 import { Routes } from "../../const/routes";
+
+const getFavIds = () => JSON.parse(localStorage.getItem("favoritos")) || [];
 
 function GameCard({ game }) {
   const navigate = useNavigate();
-  const { getFavorites, toggleFavorite } = useFavorites();
 
-  const [isFav, setIsFav] = useState(
-    () => getFavorites().some((g) => g.id === game.id)
-  );
+  const gameId = Number(game.id);
+
+  const [isFav, setIsFav] = useState(() => getFavIds().includes(gameId));
 
   const handleFav = (e) => {
     e.stopPropagation();
-    toggleFavorite(game);
+    const favs = getFavIds();
+    const updated = favs.includes(gameId)
+      ? favs.filter((f) => f !== gameId)
+      : [...favs, gameId];
+    localStorage.setItem("favoritos", JSON.stringify(updated));
     setIsFav(!isFav);
   };
 
