@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,16 +23,13 @@ function SearchBar({ onSearch }) {
 
   return (
     <form onSubmit={handleSubmit} className="relative w-full">
-      
-      {/* ICONO */}
       <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8f98a0] text-sm pointer-events-none" />
 
-      {/* INPUT */}
       <input
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Buscar juegos..."
+        placeholder={t("searchGames")}
         className="
           w-full
           bg-[#2a475e]

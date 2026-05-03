@@ -9,8 +9,9 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import { NosotrosModal } from "../NosotrosModal/NosotrosModal";
-
+import { useTranslation } from "react-i18next";
 function Footer() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   return (
     <footer className="bg-[#171a21] border-t border-[#2a475e] mt-10">
@@ -22,31 +23,30 @@ function Footer() {
             <h2 className="text-[#66c0f4] font-semibold text-lg">EsteamApp</h2>
 
             <p>
-              Plataforma de exploración de videojuegos. Descubrí, explorá y
-              guardá tus favoritos.
+              {t("discoverGames")}
             </p>
             <button
               onClick={() => setOpen(true)}
               className="mt-4 text-[#c7d5e0] hover:text-[#66c0f4] transition"
             >
-              Sobre nosotros
+              {t("aboutUs")}
             </button>
           </div>
 
           {/* NAVEGACIÓN */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">Navegación</h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">{t("navigation")}</h3>
 
             <ul className="space-y-2">
               <li>
                 <Link to={Routes.home} className="hover:text-[#66c0f4]">
-                  Inicio
+                  {t("home")}
                 </Link>
               </li>
 
               <li>
                 <Link to={Routes.favorites} className="hover:text-[#66c0f4]">
-                  Favoritos
+                  {t("favorites")}
                 </Link>
               </li>
             </ul>
@@ -54,7 +54,7 @@ function Footer() {
 
           {/* CONTACTO */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">Contacto</h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">{t("contact")}</h3>
 
             <ul className="space-y-2">
               <li>
@@ -81,7 +81,7 @@ function Footer() {
 
           {/* REDES */}
           <div className="space-y-3 flex flex-col items-center md:items-start">
-            <h3 className="text-[#c7d5e0] mb-3 font-medium">Redes</h3>
+            <h3 className="text-[#c7d5e0] mb-3 font-medium">{t("social")}</h3>
 
             <ul className="space-y-2">
               <li>
@@ -131,7 +131,7 @@ function Footer() {
 
         {/* BOTTOM */}
         <div className="text-center text-xs">
-          © 2026 EsteamApp — Todos los derechos reservados
+          {t("allRightsReserved")}
         </div>
       </div>
     </footer>

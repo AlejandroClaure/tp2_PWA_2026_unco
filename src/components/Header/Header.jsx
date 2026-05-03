@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 import { Routes } from "../../const/routes";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useTranslation } from "react-i18next";
+import logo from "../../assets/logo.png";
 
 function Header({ onSearch }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLang = (lang) => {
-    i18n.changeLanguage(lang);
-    localStorage.setItem("lang", lang);
-  };
+  i18n.changeLanguage(lang);
+  localStorage.setItem("lang", lang);
+};
 
   return (
     <header className="bg-linear-to-b from-[#1b2838] to-[#171a21] border-b border-[#2a475e]">
@@ -20,7 +21,7 @@ function Header({ onSearch }) {
           to={Routes.home}
           className="flex items-center gap-2 text-[#66c0f4] font-semibold text-lg"
         >
-          <span className="text-xl">⚙️</span>
+          <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
           EsteamApp
         </Link>
 
@@ -37,7 +38,7 @@ function Header({ onSearch }) {
             to={Routes.favorites}
             className="hover:text-[#66c0f4] transition flex items-center gap-1"
           >
-            Favoritos <span className="text-yellow-400">★</span>
+            {t("favorites")} <span className="text-yellow-400">★</span>
           </Link>
 
           {/* LANG */}
