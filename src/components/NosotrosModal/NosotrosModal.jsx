@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaTimes, FaUser } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function NosotrosModal({ isOpen, onClose }) {
   const [isClosing, setIsClosing] = useState(false);
+  const { t } = useTranslation();
 
   const handleClose = () => {
     setIsClosing(true);
@@ -12,15 +14,17 @@ function NosotrosModal({ isOpen, onClose }) {
     }, 180);
   };
 
-  // ESC
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") handleClose();
     };
 
     window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  },);
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   if (!isOpen && !isClosing) return null;
 
@@ -28,24 +32,22 @@ function NosotrosModal({ isOpen, onClose }) {
     {
       name: "Alejandro Claure",
       email: "alejandroclaure01@gmail.com",
-      role: "PM / Scrum Master",
+      role: t("pmScrum"),
     },
     {
       name: "Gaston Llaupe",
       email: "llaupeg@gmail.com",
-      role: "Developer",
+      role: t("developer"),
     },
     {
       name: "Joaquin Ignacio",
       email: "Joaquinivl95@gmail.com",
-      role: "Developer",
+      role: t("developer"),
     },
   ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-
-      {/* OVERLAY */}
       <div
         onClick={handleClose}
         className={`
@@ -55,25 +57,19 @@ function NosotrosModal({ isOpen, onClose }) {
         `}
       />
 
-      {/* MODAL */}
       <div
         className={`
           relative w-full max-w-md p-5 rounded-xl
           bg-[#1b2838] border border-[#2a475e] shadow-2xl text-[#c7d5e0]
-
-          transform-gpu
-          transition-all duration-200 ease-out
-
-          ${isClosing
-            ? "opacity-0 translate-y-2"
-            : "opacity-100 translate-y-0"}
+          transform-gpu transition-all duration-200 ease-out
+          ${isClosing ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}
         `}
       >
-        {/* HEADER */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-[#66c0f4] text-lg font-semibold">
-            Equipo EsteamApp
+            {t("teamTitle")}
           </h2>
+
           <button
             onClick={handleClose}
             className="hover:text-white transition-colors duration-150"
@@ -82,7 +78,6 @@ function NosotrosModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* LISTA */}
         <div className="space-y-2">
           {team.map((member, i) => (
             <div
@@ -90,9 +85,8 @@ function NosotrosModal({ isOpen, onClose }) {
               className="
                 flex items-start gap-3 p-3 rounded-lg
                 bg-[#2a475e]
-
-                transition-colors duration-100
                 hover:bg-[#1f3a4d]
+                transition-colors duration-100
               "
             >
               <div className="text-[#66c0f4] mt-1 opacity-90">
@@ -100,12 +94,10 @@ function NosotrosModal({ isOpen, onClose }) {
               </div>
 
               <div>
-                <p className="font-medium leading-tight">
-                  {member.name}
-                </p>
-                <p className="text-xs text-[#8f98a0]">
-                  {member.role}
-                </p>
+                <p className="font-medium leading-tight">{member.name}</p>
+
+                <p className="text-xs text-[#8f98a0]">{member.role}</p>
+
                 <a
                   href={`mailto:${member.email}`}
                   className="
@@ -121,9 +113,8 @@ function NosotrosModal({ isOpen, onClose }) {
           ))}
         </div>
 
-        {/* FOOTER */}
         <p className="text-xs text-[#8f98a0] mt-4 text-center">
-          Gracias por usar EsteamApp 💙
+          {t("thanksUsing")}
         </p>
       </div>
     </div>

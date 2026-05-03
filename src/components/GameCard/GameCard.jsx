@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { Routes } from "../../const/routes";
-
+import { useTranslation } from "react-i18next";
 const getFavIds = () => JSON.parse(localStorage.getItem("favoritos")) || [];
 
 function GameCard({ game }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const gameId = Number(game.id);
@@ -58,7 +59,7 @@ function GameCard({ game }) {
           <button
             onClick={handleFav}
             className="text-red-400 hover:text-red-300 transition-colors"
-            aria-label={isFav ? "Quitar de favoritos" : "Agregar a favoritos"}
+            aria-label={isFav ? t("removeFavorite") : t("addFavorite")}
           >
             {isFav ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
           </button>

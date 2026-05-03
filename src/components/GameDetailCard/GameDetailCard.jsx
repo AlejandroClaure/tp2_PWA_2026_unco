@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-
+import { useTranslation } from "react-i18next";
 function GameDetailCard({ id }) {
+  const { t } = useTranslation();
   const [game, setGame] = useState(null);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ function GameDetailCard({ id }) {
   const esFavorito = favoritos.includes(id);
 
   if (!game) return <div className="min-h-screen bg-[#0f172a] flex items-center justify-center">
-      <p className="text-gray-300 text-xl">Cargando...</p>
+      <p className="text-gray-300 text-xl">{t("loading")}</p>
     </div>;
 
   return (
@@ -102,7 +103,7 @@ function GameDetailCard({ id }) {
 
           {/* Developer */}
           <p className="text-gray-400 text-sm border-t border-gray-700 pt-4">
-            <span className="text-white font-medium">Developer:</span>{" "}
+            <span className="text-white font-medium">{t("developer")}:</span>{" "}
             {game.developer}
           </p>
           <div className="mt-6 flex justify-center"><FavoriteButton 

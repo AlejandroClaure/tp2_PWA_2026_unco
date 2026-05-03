@@ -1,0 +1,25 @@
+{
+  "favorites": "Favoritos",
+  "home": "Inicio",
+  "loading": "Cargando...",
+  "loadingGames": "Cargando juegos...",
+  "gamesNotFound": "No se encontraron juegos",
+  "contact": "Contacto",
+  "navigation": "Navegación",
+  "social": "Redes",
+  "aboutUs": "Sobre nosotros",
+  "notFound": "Página no encontrada",
+  "routeNotFound": "La ruta que intentaste abrir no existe o fue movida.",
+  "backHome": "Volver al inicio",
+  "allRightsReserved": "Todos los derechos reservados",
+  "discoverGames": "Plataforma de exploración de videojuegos. Descubrí, explorá y guardá tus favoritos.",
+  "addFavorite": "Agregar a favoritos",
+  "removeFavorite": "Quitar de favoritos",
+  "developer": "Desarrollador",
+  "errorLoadingGames": "Error al cargar los juegos. Intentá de nuevo más tarde.",
+  "searchGames": "Buscar juegos...",
+  "teamTitle": "Equipo EsteamApp",
+"thanksUsing": "Gracias por usar EsteamApp 💙",
+"pmScrum": "PM / Scrum Master"
+
+}

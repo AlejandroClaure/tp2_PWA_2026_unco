@@ -2,10 +2,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useOutletContext } from "react-router-dom";
 import { getGames } from "../../services/gameApi";
 import { GameList } from "../../components/GameList/GameList";
-
+import { useTranslation } from "react-i18next";
 const LIMIT = 5;
 
 function Home() {
+  const { t } = useTranslation();
   const { search } = useOutletContext();
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -113,7 +114,7 @@ function Home() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-6">
         <p className="text-red-400 text-center py-12">
-          Error al cargar los juegos. Intentá de nuevo más tarde.
+          {t("errorLoadingGames")}
         </p>
       </div>
     );
