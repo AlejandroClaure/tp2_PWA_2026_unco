@@ -229,9 +229,9 @@ localStorage.setItem("favorites", JSON.stringify([...]))
 - [x] Setup inicial
 - [x] Routing
 - [x] Listado de juegos
-- [ ] Vista de detalles
-- [ ] Sistema de favoritos
-- [ ] Buscador en tiempo real
+- [x] Vista de detalles
+- [x] Sistema de favoritos
+- [x] Buscador en tiempo real
 
 ---
 
