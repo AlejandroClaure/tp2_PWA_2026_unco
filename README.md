@@ -51,7 +51,7 @@ Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permi
 
 | 🏠 Home | 📄 Detalle | ⭐ Favoritos |
 | :---: | :---: | :---: |
-| ![Home](./screenshots/home.png) | ![Details](./screenshots/details.png) | ![Favorites](./screenshots/favorites.png) |
+| ![Home](./public/main.pnh) | ![Details](./public/detalles.png) | ![Favorites](./public/favoritos.png) |
 
 ---
 
