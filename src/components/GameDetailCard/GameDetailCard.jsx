@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
+
 function GameDetailCard({ id }) {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [game, setGame] = useState(null);
 
@@ -20,6 +24,7 @@ function GameDetailCard({ id }) {
         setGame(data);
       } catch (error) {
         console.log("Error:", error);
+        navigate("/notfound");
       }
     };
 
