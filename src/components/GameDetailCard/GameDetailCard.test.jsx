@@ -3,6 +3,7 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import GameDetailCard from "./GameDetailCard";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useTranslation } from "react-i18next";
+import { MemoryRouter } from "react-router-dom";
 
 Object.defineProperty(window, "localStorage", {
   value: {
@@ -29,19 +30,31 @@ describe("GameDetailCard", () => {
   });
 
   it("muestra loading al iniciar", () => {
-    render(<GameDetailCard id="1" />);
+    render(
+      <MemoryRouter>
+        <GameDetailCard id="1" />
+      </MemoryRouter>
+    );  
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
 
   it("muestra una imagen del juego", async () => {
-    render(<GameDetailCard id="1" />);
+      render(
+      <MemoryRouter>
+        <GameDetailCard id="1" />
+      </MemoryRouter>
+    ); 
 
     expect(await screen.findByRole("img")).toBeInTheDocument();
   });
 
   it("llama a la api con el id correcto", () => {
-    render(<GameDetailCard id="5" />);
+    render(
+      <MemoryRouter>
+        <GameDetailCard id="5" />
+      </MemoryRouter>
+    );
 
     expect(fetch).toHaveBeenCalledWith(
       "https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos/5"
