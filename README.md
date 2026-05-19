@@ -7,14 +7,18 @@
 </p>
 
 <p align="center">
-  Aplicación web estilo <strong>Steam</strong> desarrollada con React + Vite + Tailwind v4
-</p>
+Aplicación web inspirada en Steam desarrollada con React, Vite y Tailwind CSS.  
+Incluye catálogo de videojuegos, búsqueda dinámica, favoritos persistentes, soporte multiidioma y testing automático con Vitest + React Testing Library.</p>
 
 ---
 
 ## 📚 Información académica
 
-**Trabajo Práctico N°2 — Programación Web Avanzada** **Facultad de Informática — Universidad Nacional del Comahue — 2026**
+**Programación Web Avanzada — Facultad de Informática — Universidad Nacional del Comahue — 2026**
+
+### Trabajos prácticos realizados
+- TP2: Aplicación React + API + Routing + Favoritos
+- TP: Testing Automático con Vitest y React Testing Library
 
 ---
 
@@ -42,12 +46,45 @@ Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permi
 - ⭐ **Sistema de favoritos** con persistencia en `localStorage`.
 - 🎨 **Interfaz estilo Steam** (Dark mode nativo).
 - ⏳ **Feedback visual:** Estados de carga y pantallas vacías.
+- 🌐 Soporte multiidioma (Español / Inglés)
+
+---
+<img src="https://img.shields.io/badge/Testing-Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" />
+## 🧪 Testing Automático
+
+El proyecto incorpora testing automático utilizando herramientas modernas del ecosistema React.
+
+### Librerías utilizadas
+
+- Vitest
+- React Testing Library
+- jest-dom
+- user-event
+
+### Tipos de tests implementados
+
+- Renderizado de componentes
+- Interacciones del usuario
+- Navegación
+- Estados de carga
+- Persistencia en localStorage
+- Mock de APIs y servicios
+
+### Componentes testeados
+
+- Header
+- SearchBar
+- GameCard
+- GameDetailCard
+- GameList
+- FavoriteButton
+- Home
+- Footer
+- NosotrosModal
 
 ---
 
 ## 🖼️ Capturas de pantalla
-
-> ⚠️ *Agregar imágenes del proyecto una vez finalizado.*
 
 | 🏠 Home | 📄 Detalle | ⭐ Favoritos |
 | :---: | :---: | :---: |
@@ -91,6 +128,11 @@ La estructura de los objetos que consumimos desde la API sigue este formato est�
 | **React Router** | Manejo de navegación y rutas de la SPA |
 | **MockAPI** | Backend simulado para el consumo de datos |
 | **localStorage** | Persistencia local para la lista de favoritos |
+| **Vitest** | Framework de testing |
+| **React Testing Library** | Testing de componentes React |
+| **jest-dom** | Matchers adicionales para testing |
+| **user-event** | Simulación de eventos de usuario |
+| **i18next** | Internacionalización |
 
 ---
 
@@ -121,7 +163,7 @@ Para poner en marcha el proyecto localmente, seguí estos pasos:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git](https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git)
+   git clone https://github.com/AlejandroClaure/tp2_PWA_2026_unco.git
    ```
 
 2. **Entrar al directorio:**
@@ -145,6 +187,23 @@ Para poner en marcha el proyecto localmente, seguí estos pasos:
    ```
 
 👉 *La app estará disponible en: `http://localhost:5173`*
+
+---
+
+<img src="https://img.shields.io/badge/RTL-Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white" /> 
+Ejecución de tests
+
+### Ejecutar tests en modo watch
+
+```bash
+npm run test
+```
+
+### Ejecutar tests una sola vez
+
+```bash
+npm run test:run
+```
 
 ---
 
@@ -225,14 +284,34 @@ localStorage.setItem("favorites", JSON.stringify([...]))
 ---
 
 ## 🚧 Estado del Proyecto
+[x] Setup inicial del proyecto con Vite y Tailwind v4
 
-- [x] Setup inicial
-- [x] Routing
-- [x] Listado de juegos
-- [ ] Vista de detalles
-- [ ] Sistema de favoritos
-- [ ] Buscador en tiempo real
+[x] Configuración de Routing de la SPA
 
+[x] Consumo asincrónico de API REST externa
+
+[x] Listado de juegos interactivo
+
+[x] Vista dinámica de detalles por juego
+
+[x] Sistema persistente de favoritos
+
+[x] Buscador funcional en tiempo real
+
+[x] Soporte de internacionalización multidioma
+
+[x] UI adaptativa (Responsive Design)
+
+[x] Cobertura de tests unitarios y de integración
+
+---
+
+📈 Mejoras Futuras
+
+- Incrementar cobertura de testing
+- Incorporar CI automático para Pull Requests
+- Implementar tests E2E
+- Mejorar soporte PWA
 ---
 
 ## 🍕 Nota del PM
