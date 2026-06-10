@@ -1,13 +1,22 @@
-const BASE_URL = "https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos";
+console.log(import.meta.env.VITE_API_URL);
+const BASE_URL = `${import.meta.env.VITE_API_URL}/games`;
 
-export const getGames = async (page = 1, search = "") => {
-  const res = await fetch(
-    `${BASE_URL}?page=${page}&limit=5&search=${search}`
-  );
+export const getGames = async () => {
+  const res = await fetch(BASE_URL);
+
+  if (!res.ok) {
+    throw new Error("Error obteniendo juegos");
+  }
+
   return res.json();
 };
 
 export const getGameById = async (id) => {
   const res = await fetch(`${BASE_URL}/${id}`);
+
+  if (!res.ok) {
+    throw new Error("Juego no encontrado");
+  }
+
   return res.json();
 };
