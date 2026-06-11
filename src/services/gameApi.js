@@ -15,10 +15,7 @@ NO modificar BASE_URL manualmente.
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/games`;
 
-export const getGames = async (
-  page = 1,
-  search = ""
-) => {
+export const getGames = async (page = 1, search = "") => {
   const params = new URLSearchParams({
     page,
     limit: 5,
@@ -28,13 +25,9 @@ export const getGames = async (
     params.append("search", search);
   }
 
-  const res = await fetch(
-    `${BASE_URL}?${params.toString()}`
-  );
+  const res = await fetch(`${BASE_URL}?${params.toString()}`);
 
-  if (!res.ok) {
-    throw new Error("Error obteniendo juegos");
-  }
+  if (!res.ok) throw new Error("Error obteniendo juegos");
 
   return res.json();
 };
@@ -42,9 +35,26 @@ export const getGames = async (
 export const getGameById = async (id) => {
   const res = await fetch(`${BASE_URL}/${id}`);
 
-  if (!res.ok) {
-    throw new Error("Juego no encontrado");
-  }
+  if (!res.ok) throw new Error("Juego no encontrado");
+
+  return res.json();
+};
+
+// FEATURE 7
+export const getFavoriteGames = async () => {
+  const res = await fetch(`${BASE_URL}/favorites`);
+
+  if (!res.ok) throw new Error("Error obteniendo favoritos");
+
+  return res.json();
+};
+
+export const toggleFavorite = async (id) => {
+  const res = await fetch(`${BASE_URL}/${id}/favorite`, {
+    method: "PATCH",
+  });
+
+  if (!res.ok) throw new Error("Error actualizando favorito");
 
   return res.json();
 };

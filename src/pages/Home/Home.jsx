@@ -14,9 +14,19 @@ function Home() {
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState(null);
 
+
   const sentinelRef = useRef(null);
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
+
+  const handleToggleFavorite = (id) => {
+    setGames((prev) =>
+      prev.map((g) =>
+        g.id === id ? { ...g, isFavorite: !g.isFavorite } : g
+      )
+    );
+  };
+
 
   // Chequea si el sentinel está visible y carga la siguiente página
   const tryLoadMore = useCallback(() => {
@@ -122,7 +132,11 @@ function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
-      <GameList games={games} loading={loading} />
+      <GameList
+        games={games}
+        loading={loading}
+        onToggleFavorite={handleToggleFavorite}
+      />
       {hasMore && <div ref={sentinelRef} className="h-4" />}
     </div>
   );
