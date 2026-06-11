@@ -3,22 +3,26 @@ import { useOutletContext } from "react-router-dom";
 import { getGames } from "../../services/gameApi";
 import { GameList } from "../../components/GameList/GameList";
 import { useTranslation } from "react-i18next";
+
 const LIMIT = 5;
 
 function Home() {
   const { t } = useTranslation();
   const { search } = useOutletContext();
+
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState(null);
 
-
   const sentinelRef = useRef(null);
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
 
+  // toggle fav (UI only)
   const handleToggleFavorite = (id) => {
     setGames((prev) =>
       prev.map((g) =>
@@ -27,20 +31,16 @@ function Home() {
     );
   };
 
+  // debounce search
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 400);
 
-  // Chequea si el sentinel está visible y carga la siguiente página
-  const tryLoadMore = useCallback(() => {
-    if (loadingRef.current || !hasMoreRef.current) return;
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-    const { top } = sentinel.getBoundingClientRect();
-    if (top <= window.innerHeight) {
-      loadingRef.current = true;
-      setPage((prev) => prev + 1);
-    }
-  }, []);
+    return () => clearTimeout(handler);
+  }, [search]);
 
-  // Reset y fetch de página 1 cuando cambia la búsqueda
+  // fetch page 1 (reset)
   useEffect(() => {
     let cancelled = false;
 
@@ -52,11 +52,14 @@ function Home() {
     setLoading(true);
     loadingRef.current = true;
 
-    getGames(1, search)
+    getGames(1, debouncedSearch)
       .then((data) => {
         if (cancelled) return;
+
         const results = Array.isArray(data) ? data : [];
+
         setGames(results);
+
         const more = results.length === LIMIT;
         setHasMore(more);
         hasMoreRef.current = more;
@@ -74,21 +77,25 @@ function Home() {
     return () => {
       cancelled = true;
     };
-  }, [search]);
+  }, [debouncedSearch]);
 
-  // Fetch de páginas siguientes
+  // fetch next pages
   useEffect(() => {
     if (page === 1) return;
 
     let cancelled = false;
+
     setLoading(true);
     loadingRef.current = true;
 
-    getGames(page, search)
+    getGames(page, debouncedSearch)
       .then((data) => {
         if (cancelled) return;
+
         const results = Array.isArray(data) ? data : [];
+
         setGames((prev) => [...prev, ...results]);
+
         const more = results.length === LIMIT;
         setHasMore(more);
         hasMoreRef.current = more;
@@ -106,16 +113,29 @@ function Home() {
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [page, debouncedSearch]);
 
-  // Escucha el scroll para trigger manual
+  // infinite scroll
+  const tryLoadMore = useCallback(() => {
+    if (loadingRef.current || !hasMoreRef.current) return;
+
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const { top } = sentinel.getBoundingClientRect();
+
+    if (top <= window.innerHeight) {
+      loadingRef.current = true;
+      setPage((prev) => prev + 1);
+    }
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", tryLoadMore, { passive: true });
     return () => window.removeEventListener("scroll", tryLoadMore);
   }, [tryLoadMore]);
 
-  // Después de cada fetch, chequea si el sentinel sigue en pantalla (auto-load)
+  // auto trigger scroll check
   useEffect(() => {
     if (!loading) tryLoadMore();
   }, [loading, tryLoadMore]);
@@ -137,6 +157,7 @@ function Home() {
         loading={loading}
         onToggleFavorite={handleToggleFavorite}
       />
+
       {hasMore && <div ref={sentinelRef} className="h-4" />}
     </div>
   );
