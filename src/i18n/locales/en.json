@@ -19,6 +19,8 @@
   "errorLoadingGames": "Error loading games. Try again later.",
   "searchGames": "Search games...",
   "teamTitle": "EsteamApp Team",
-"thanksUsing": "Thanks for using EsteamApp 💙",
-"pmScrum": "PM / Scrum Master"
+  "thanksUsing": "Thanks for using EsteamApp 💙",
+  "pmScrum": "PM / Scrum Master",
+  "loadingFavorites": "Loading favorites...",
+  "noFavorites": "You don't have favorite games"
 }

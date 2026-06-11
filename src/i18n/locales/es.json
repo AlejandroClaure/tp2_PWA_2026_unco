@@ -19,7 +19,8 @@
   "errorLoadingGames": "Error al cargar los juegos. Intentá de nuevo más tarde.",
   "searchGames": "Buscar juegos...",
   "teamTitle": "Equipo EsteamApp",
-"thanksUsing": "Gracias por usar EsteamApp 💙",
-"pmScrum": "PM / Scrum Master"
-
+  "thanksUsing": "Gracias por usar EsteamApp 💙",
+  "pmScrum": "PM / Scrum Master",
+  "loadingFavorites": "Cargando favoritos...",
+  "noFavorites": "No tenés juegos en favoritos"
 }

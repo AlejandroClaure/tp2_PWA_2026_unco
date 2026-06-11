@@ -1,20 +1,21 @@
-import styles from "./FavoriteButton.module.css";
-function FavoriteButton({
-    id,
-    onFav,
-    esFavorito
-})
-{
-return(
-<div>
+import { useTranslation } from "react-i18next";
+
+function FavoriteButton({ id, onFav, esFavorito }) {
+  const { t } = useTranslation();
+
+  return (
+    <div>
       <button
         type="button"
         onClick={() => onFav(id)}
         className="bg-emerald-700 text-white p-2 px-10 cursor-pointer active:scale-95 transition-transform duration-150 rounded-sm"
       >
-        {esFavorito ? "♥ Eliminar de favoritos" : "♡ Agregar a favoritos"}
+        {esFavorito
+          ? `♥ ${t("removeFavorite")}`
+          : `♡ ${t("addFavorite")}`}
       </button>
-</div>
-)}
+    </div>
+  );
+}
 
 export default FavoriteButton;

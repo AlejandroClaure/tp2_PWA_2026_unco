@@ -1,26 +1,20 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
-import { Routes } from "../../const/routes";
 import { useTranslation } from "react-i18next";
-const getFavIds = () => JSON.parse(localStorage.getItem("favoritos")) || [];
+import { toggleFavorite } from "../../services/gameApi";
 
-function GameCard({ game }) {
+function GameCard({ game, onToggleFavorite }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const gameId = Number(game.id);
-
-  const [isFav, setIsFav] = useState(() => getFavIds().includes(gameId));
-
-  const handleFav = (e) => {
+  const handleFav = async (e) => {
     e.stopPropagation();
-    const favs = getFavIds();
-    const updated = favs.includes(gameId)
-      ? favs.filter((f) => f !== gameId)
-      : [...favs, gameId];
-    localStorage.setItem("favoritos", JSON.stringify(updated));
-    setIsFav(!isFav);
+
+    await toggleFavorite(game.id);
+
+    if (onToggleFavorite) {
+      onToggleFavorite(game.id);
+    }
   };
 
   return (
@@ -59,9 +53,17 @@ function GameCard({ game }) {
           <button
             onClick={handleFav}
             className="text-red-400 hover:text-red-300 transition-colors"
-            aria-label={isFav ? t("removeFavorite") : t("addFavorite")}
+            aria-label={
+              game.isFavorite
+                ? t("removeFavorite")
+                : t("addFavorite")
+            }
           >
-            {isFav ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
+            {game.isFavorite ? (
+              <FaHeart size={16} />
+            ) : (
+              <FaRegHeart size={16} />
+            )}
           </button>
         </div>
       </div>
