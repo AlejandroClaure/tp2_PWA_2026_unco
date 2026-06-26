@@ -7,6 +7,7 @@ import { Home } from "./pages/Home/Home.jsx";
 import Details from "./pages/Details/Details.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 import { Routes } from "./const/routes.js";
 import { Layout } from "./components/Layout/Layout.jsx";
 
@@ -27,6 +28,22 @@ const router = createBrowserRouter([
       {
         path: Routes.favorites,
         element: <Favorites />,
+      },
+      {
+        path: Routes.login,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: Routes.register,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
       {
         path: "*",
