@@ -2,20 +2,40 @@ import { Link } from "react-router-dom";
 import { Routes } from "../../const/routes";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
 
 function Header({ onSearch }) {
   const { t, i18n } = useTranslation();
+  const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
 
   const changeLang = (lang) => {
-  i18n.changeLanguage(lang);
-  localStorage.setItem("lang", lang);
-};
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("http://localhost:3000/auth/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      logout();
+      navigate(Routes.login);
+    }
+  };
 
   return (
     <header className="bg-linear-to-b from-[#1b2838] to-[#171a21] border-b border-[#2a475e]">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-        
+
         {/* LOGO */}
         <Link
           to={Routes.home}
@@ -27,12 +47,12 @@ function Header({ onSearch }) {
 
         {/* SEARCH */}
         <div className="flex-1 max-w-md mx-6">
-            <SearchBar onSearch={onSearch} />
+          <SearchBar onSearch={onSearch} />
         </div>
 
         {/* DERECHA */}
         <div className="flex items-center gap-4 text-sm text-[#c7d5e0]">
-          
+
           {/* FAVORITOS */}
           <Link
             to={Routes.favorites}
@@ -41,28 +61,78 @@ function Header({ onSearch }) {
             {t("favorites")} <span className="text-yellow-400">★</span>
           </Link>
 
-          {/* LANG */}
-          <div className="flex items-center gap-1">
-            <button
-              onClick={() => changeLang("es")}
-              className={`hover:text-white ${
-                i18n.language === "es" ? "text-white" : "opacity-60"
-              }`}
-            >
-              ES
-            </button>
+          {user ? (
+            <>
+              <span className="text-[#8f98a0]">
+                Hola, {user.name}
+              </span>
 
-            <span className="opacity-50">|</span>
+              <button
+                onClick={handleLogout}
+                className="bg-[#66c0f4] text-[#171a21] px-3 py-1 rounded hover:bg-[#1a9fff] transition font-medium"
+              >
+                Logout
+              </button>
 
-            <button
-              onClick={() => changeLang("en")}
-              className={`hover:text-white ${
-                i18n.language === "en" ? "text-white" : "opacity-60"
-              }`}
-            >
-              EN
-            </button>
-          </div>
+              {/* LANG */}
+              <div className="flex items-center gap-1 ml-2">
+                <button
+                  onClick={() => changeLang("es")}
+                  className={`hover:text-white ${i18n.language === "es" ? "text-white" : "opacity-60"
+                    }`}
+                >
+                  ES
+                </button>
+
+                <span className="opacity-50">|</span>
+
+                <button
+                  onClick={() => changeLang("en")}
+                  className={`hover:text-white ${i18n.language === "en" ? "text-white" : "opacity-60"
+                    }`}
+                >
+                  EN
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link
+                to={Routes.login}
+                className="hover:text-[#66c0f4] transition"
+              >
+                Login
+              </Link>
+
+              <Link
+                to={Routes.register}
+                className="bg-[#66c0f4] text-[#171a21] px-3 py-1 rounded hover:bg-[#1a9fff] transition font-medium"
+              >
+                Register
+              </Link>
+
+              {/* LANG */}
+              <div className="flex items-center gap-1 ml-2">
+                <button
+                  onClick={() => changeLang("es")}
+                  className={`hover:text-white ${i18n.language === "es" ? "text-white" : "opacity-60"
+                    }`}
+                >
+                  ES
+                </button>
+
+                <span className="opacity-50">|</span>
+
+                <button
+                  onClick={() => changeLang("en")}
+                  className={`hover:text-white ${i18n.language === "en" ? "text-white" : "opacity-60"
+                    }`}
+                >
+                  EN
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>

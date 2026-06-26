@@ -9,6 +9,7 @@ import Register from "./pages/Register/Register";
 import Details from "./pages/Details/Details.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 import { Routes } from "./const/routes.js";
 import { Layout } from "./components/Layout/Layout.jsx";
 
@@ -32,11 +33,19 @@ const router = createBrowserRouter([
       },
       {
         path: Routes.login,
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: Routes.register,
-        element: <Register />,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
       {
         path: "*",
