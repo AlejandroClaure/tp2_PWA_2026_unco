@@ -1,0 +1,64 @@
+// constants/pagination.js
+
+export const PAGE_SIZE = 5;
+
+En Home cambiaría el LIMIT hardcodeado y lo traería de acá
+import { PAGE_SIZE } from "../constants/pagination";
+
+const LIMIT = PAGE_SIZE;
+
+Luego en GameApi lo mismo
+import { PAGE_SIZE } from "../constants/pagination";
+
+const params = new URLSearchParams({
+  page,
+  limit: PAGE_SIZE,
+});
+
+Esto sirve por si quiero cambiar el listado de juegos que se traen. el page se 
+va guardando como un array a medida que se trae, mientras que el limit
+establece la cantidad de juegos a traer. si hardcodeo distintos en ambos lados
+en el front al hacer el limit === valor distinto, dará false y no habrá nueva página
+
+Explicación del debounce. Este permite que en lugar de al momento de hacer
+la petición cada vez que se va escribiendo, como se mostraría así:
+
+getGames(1, "m");
+getGames(1, "ma");
+getGames(1, "mar");
+getGames(1, "mari");
+getGames(1, "mario");
+
+El debounce permite hacer una sola petición al tener un timeout de 400ms
+
+useEffect(() => {
+  const handler = setTimeout(() => {
+    setDebouncedSearch(search);
+  }, 400);
+
+  return () => clearTimeout(handler);
+}, [search]);
+
+Usuario escribe:
+
+m
+
+Se crea:
+
+setTimeout(..., 400)
+
+Pero antes de 400 ms escribe:
+
+ma
+
+Entonces React ejecuta:
+
+clearTimeout(handler);
+Esto Cancela el timer anterior y vuelve a tener 400 ms. y así hasta que pasen
+los 400 ms y finalmente, el usuario pida al servidor:
+
+getGames(1, "mario");
+
+Esto evita que el usuario haga muchas peticiones al servidor para hacer 
+una sola búsqueda. Se evita sobrecargar recursos y peticiones, lo cual
+podría salir caro y realentizar la página.
