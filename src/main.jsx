@@ -4,6 +4,7 @@ import "./index.css";
 import "./i18n";
 
 import { Home } from "./pages/Home/Home.jsx";
+import Login from "./pages/Login/Login";
 import Details from "./pages/Details/Details.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: Routes.favorites,
         element: <Favorites />,
+      },
+      {
+        path: Routes.login,
+        element: <Login />,
       },
       {
         path: "*",
