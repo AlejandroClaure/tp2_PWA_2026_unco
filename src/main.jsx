@@ -5,6 +5,7 @@ import "./i18n";
 
 import { Home } from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Details from "./pages/Details/Details.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: Routes.login,
         element: <Login />,
+      },
+      {
+        path: Routes.register,
+        element: <Register />,
       },
       {
         path: "*",

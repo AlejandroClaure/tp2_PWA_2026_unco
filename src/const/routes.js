@@ -3,4 +3,5 @@ export const Routes = {
   details: "/items/:id",
   favorites: "/favorites",
   login: "/Login",
+  register: "Register",
 };
