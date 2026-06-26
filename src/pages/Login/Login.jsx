@@ -61,30 +61,54 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar sesión</h2>
+  <div className="min-h-[calc(100vh-72px)] bg-[#1b2838] flex items-center justify-center px-4">
+    <div className="w-full max-w-md bg-[#2a475e] rounded-xl shadow-2xl p-8 border border-[#3b5d78]">
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-      />
+      <h2 className="text-3xl font-bold text-[#66c0f4] text-center mb-2">
+        Iniciar sesión
+      </h2>
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        value={form.password}
-        onChange={handleChange}
-      />
+      <p className="text-[#8f98a0] text-center mb-8">
+        Accedé con tu cuenta de SteamLike.
+      </p>
 
-      {error && <p>{error}</p>}
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-      <button type="submit">Ingresar</button>
-    </form>
-  );
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          className="w-full rounded-md bg-[#1b2838] border border-[#3b5d78] px-4 py-3 text-[#c7d5e0] placeholder:text-[#8f98a0] focus:border-[#66c0f4] focus:outline-none"
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={form.password}
+          onChange={handleChange}
+          className="w-full rounded-md bg-[#1b2838] border border-[#3b5d78] px-4 py-3 text-[#c7d5e0] placeholder:text-[#8f98a0] focus:border-[#66c0f4] focus:outline-none"
+        />
+
+        {error && (
+          <p className="rounded-md bg-red-900/40 border border-red-600 px-4 py-2 text-red-300">
+            {error}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          className="w-full rounded-md bg-[#66c0f4] py-3 font-semibold text-[#171a21] transition hover:bg-[#1a9fff]"
+        >
+          Ingresar
+        </button>
+
+      </form>
+    </div>
+  </div>
+);
 }
 
 export default Login;
