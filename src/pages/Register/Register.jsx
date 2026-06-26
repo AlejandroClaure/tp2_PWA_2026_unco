@@ -69,41 +69,70 @@ function Register() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Crear cuenta</h2>
+  <div className="min-h-[calc(100vh-72px)] bg-[#1b2838] flex items-center justify-center px-4">
+    <div className="w-full max-w-md bg-[#2a475e] rounded-xl shadow-2xl p-8 border border-[#3b5d78]">
 
-            <input
-                type="text"
-                name="name"
-                placeholder="Nombre"
-                value={form.name}
-                onChange={handleChange}
-            />
+      <h2 className="text-3xl font-bold text-[#66c0f4] text-center mb-2">
+        Crear cuenta
+      </h2>
 
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-            />
+      <p className="text-[#8f98a0] text-center mb-8">
+        Registrate para comenzar a explorar SteamLike.
+      </p>
 
-            <input
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                value={form.password}
-                onChange={handleChange}
-            />
-            {success && <p className="mt-4 rounded-md bg-green-100 border border-green-300 px-4 py-2 text-green-700">{success}</p>}
-            {error && <p className="mt-4 rounded-md bg-red-100 border border-red-300 px-4 py-2 text-red-700">{error}</p>}
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-            <button type="submit" disabled={loading} className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
-                
-                {loading ? "Redirigiendo..." : "Registrarse"}
-            </button>
-        </form>
-    );
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          value={form.name}
+          onChange={handleChange}
+          className="w-full rounded-md bg-[#1b2838] border border-[#3b5d78] px-4 py-3 text-[#c7d5e0] placeholder:text-[#8f98a0] focus:border-[#66c0f4] focus:outline-none"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          className="w-full rounded-md bg-[#1b2838] border border-[#3b5d78] px-4 py-3 text-[#c7d5e0] placeholder:text-[#8f98a0] focus:border-[#66c0f4] focus:outline-none"
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={form.password}
+          onChange={handleChange}
+          className="w-full rounded-md bg-[#1b2838] border border-[#3b5d78] px-4 py-3 text-[#c7d5e0] placeholder:text-[#8f98a0] focus:border-[#66c0f4] focus:outline-none"
+        />
+
+        {success && (
+          <p className="rounded-md bg-green-900/40 border border-green-600 px-4 py-2 text-green-300">
+            {success}
+          </p>
+        )}
+
+        {error && (
+          <p className="rounded-md bg-red-900/40 border border-red-600 px-4 py-2 text-red-300">
+            {error}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-md bg-[#66c0f4] py-3 font-semibold text-[#171a21] transition hover:bg-[#1a9fff] disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {loading ? "Redirigiendo..." : "Registrarse"}
+        </button>
+
+      </form>
+    </div>
+  </div>
+);
 }
 
 export default Register;
