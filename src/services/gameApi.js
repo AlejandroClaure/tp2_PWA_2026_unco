@@ -15,6 +15,12 @@ NO modificar BASE_URL manualmente.
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/games`;
 
+const FAVORITES_URL = `${import.meta.env.VITE_API_URL}/favorites`
+const getAuthHeader = () => ({
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${localStorage.getItem("token")}`
+})
+
 export const getGames = async (page = 1, search = "") => {
   const params = new URLSearchParams({
     page,
@@ -42,19 +48,33 @@ export const getGameById = async (id) => {
 
 // FEATURE 7
 export const getFavoriteGames = async () => {
-  const res = await fetch(`${BASE_URL}/favorites`);
+  const res = await fetch(FAVORITES_URL, {
+    headers: getAuthHeader(),
+  });
 
   if (!res.ok) throw new Error("Error obteniendo favoritos");
 
   return res.json();
 };
 
-export const toggleFavorite = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}/favorite`, {
-    method: "PATCH",
+export const addFavoriteGame = async (id) => {
+  const res = await fetch(`${FAVORITES_URL}/${id}`, {
+    method: "POST",
+    headers: getAuthHeader(),
   });
 
-  if (!res.ok) throw new Error("Error actualizando favorito");
+  if (!res.ok) throw new Error("Error agregando favorito");
+
+  return res.json();
+};
+
+export const removeFavoriteGame = async (id) => {
+  const res = await fetch(`${FAVORITES_URL}/${id}`, {
+    method: "DELETE",
+    headers: getAuthHeader(),
+  });
+
+  if (!res.ok) throw new Error("Error eliminando favorito");
 
   return res.json();
 };
