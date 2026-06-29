@@ -1,28 +1,18 @@
-# 🎮 EsteamApp — Catálogo de Juegos
-
-<p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-</p>
-
-<p align="center">
-Aplicación web inspirada en Steam desarrollada con React, Vite y Tailwind CSS.  
-Incluye catálogo de videojuegos, búsqueda dinámica, favoritos persistentes, soporte multiidioma y testing automático con Vitest + React Testing Library.</p>
+# EsteamApp — Catálogo de Juegos
 
 ---
 
-## 📚 Información académica
+## Información académica
 
 **Programación Web Avanzada — Facultad de Informática — Universidad Nacional del Comahue — 2026**
 
 ### Trabajos prácticos realizados
 - TP2: Aplicación React + API + Routing + Favoritos
-- TP: Testing Automático con Vitest y React Testing Library
+- TP3: Seguridad, Autenticación y JWT
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 
 | Nombre | Email | Rol |
 | :--- | :--- | :--- |
@@ -32,134 +22,63 @@ Incluye catálogo de videojuegos, búsqueda dinámica, favoritos persistentes, s
 
 ---
 
-## 🧾 Descripción
+## Descripción
 
-Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permite explorar juegos, visualizar su información detallada y gestionar una lista de favoritos.
+Aplicación web que simula un catálogo de videojuegos inspirado en Steam. Permite explorar juegos, registrarse, iniciar sesión y gestionar una lista de favoritos persistida en el backend mediante autenticación JWT.
 
----
+El backend puede verse en este [repositorio](https://github.com/gastonllaupe/tp3_PWA_2026_unco).
 
-## ✨ Funcionalidades
-
-- 📦 **Listado de juegos** desde API (MockAPI).
-- 🔎 **Búsqueda** en tiempo real.
-- 📄 **Vista de detalle** por cada título.
-- ⭐ **Sistema de favoritos** con persistencia en `localStorage`.
-- 🎨 **Interfaz estilo Steam** (Dark mode nativo).
-- ⏳ **Feedback visual:** Estados de carga y pantallas vacías.
-- 🌐 Soporte multiidioma (Español / Inglés)
-
----
-<img src="https://img.shields.io/badge/Testing-Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" />
-## 🧪 Testing Automático
-
-El proyecto incorpora testing automático utilizando herramientas modernas del ecosistema React.
-
-### Librerías utilizadas
-
-- Vitest
-- React Testing Library
-- jest-dom
-- user-event
-
-### Tipos de tests implementados
-
-- Renderizado de componentes
-- Interacciones del usuario
-- Navegación
-- Estados de carga
-- Persistencia en localStorage
-- Mock de APIs y servicios
-
-### Componentes testeados
-
-- Header
-- SearchBar
-- GameCard
-- GameDetailCard
-- GameList
-- FavoriteButton
-- Home
-- Footer
-- NosotrosModal
+- Deploy frontend: https://tp2-pwa-2026-unco.vercel.app/
+- Deploy backend: https://tp3-pwa-2026-unco.vercel.app/
 
 ---
 
-## 🖼️ Capturas de pantalla
+## Funcionalidades
 
-| 🏠 Home | 📄 Detalle | ⭐ Favoritos |
-| :---: | :---: | :---: |
-| ![Home](./public/main.png) | ![Details](./public/detalles.png) | ![Favorites](./public/favoritos.png) |
+- Listado de juegos con paginación infinita
+- Búsqueda en tiempo real con debounce
+- Vista de detalle por juego
+- Registro e inicio de sesión con JWT
+- Sistema de favoritos persistido en el backend (por usuario)
+- Rutas protegidas: `/favorites` requiere sesión activa
+- Rutas públicas: `/login` y `/register` redirigen al home si ya hay sesión
+- Interfaz estilo Steam (dark mode)
+- Soporte multiidioma (Español / Inglés)
 
 ---
 
+## Stack tecnológico
+
+| Tecnología | Uso / Propósito |
+| :--- | :--- |
+| React | Biblioteca principal para la interfaz de usuario |
+| Vite | Tooling y entorno de desarrollo |
+| Tailwind CSS v4 | Estilado mediante clases de utilidad |
+| React Router | Manejo de navegación y rutas de la SPA |
+| Context API | Estado global de autenticación (AuthContext) |
+| Vitest | Framework de testing |
+| React Testing Library | Testing de componentes React |
+| i18next | Internacionalización |
 
 ---
 
-## 🧠 Modelo de Datos
+## Variables de entorno
 
-La estructura de los objetos que consumimos desde la API sigue este formato estándar:
+Crear un archivo `.env` en la raíz:
 
-```json
-{
-  "id": "1",
-  "titulo": "Cyberpunk 2077",
-  "genero": "RPG",
-  "precio": 59.99,
-  "imagen": "URL",
-  "rating": 4.2,
-  "isFavorite": false,
-  "anio": 2020,
-  "plataformas": "PC, PS5, Xbox",
-  "descripcion": "Texto descriptivo del juego...",
-  "developer": "CD Projekt Red"
-}
+```env
+VITE_API_URL=http://localhost:3000/api
+```
 
+En producción (Vercel) configurar:
+
+```env
+VITE_API_URL=https://tp3-pwa-2026-unco.vercel.app/api
 ```
 
 ---
 
-## ⚙️ Stack Tecnológico
-
-| Tecnología | Uso / Propósito |
-| :--- | :--- |
-| **React** | Biblioteca principal para la interfaz de usuario |
-| **Vite** | Tooling y entorno de desarrollo ultra rápido |
-| **Tailwind CSS v4** | Estilado mediante utilidades de última generación |
-| **React Router** | Manejo de navegación y rutas de la SPA |
-| **MockAPI** | Backend simulado para el consumo de datos |
-| **localStorage** | Persistencia local para la lista de favoritos |
-| **Vitest** | Framework de testing |
-| **React Testing Library** | Testing de componentes React |
-| **jest-dom** | Matchers adicionales para testing |
-| **user-event** | Simulación de eventos de usuario |
-| **i18next** | Internacionalización |
-
----
-
-## 🎨 Paleta de Colores (Steam-like)
-
-Para lograr la estética característica de la plataforma, utilizamos los siguientes códigos hexadecimales:
-
-* 🔵 **Fondo Principal:** `#1b2838`
-* 🌑 **Fondo Secundario:** `#171a21`
-* 📂 **Tarjetas (Cards):** `#2a475e`
-* 💎 **Acento (Primary):** `#66c0f4`
-* ✨ **Hover:** `#1a9fff`
-* ⚪ **Texto Principal:** `#c7d5e0`
-* 🔘 **Texto Secundario:** `#8f98a0`
-
----
-
-## 🌐 API Reference
-
-Los datos se obtienen del siguiente endpoint:
-`https://69e2e9773327837a1552b35a.mockapi.io/api/v1/juegos`
-
----
-
-## 🚀 Instalación y Setup
-
-Para poner en marcha el proyecto localmente, seguí estos pasos:
+## Instalación y setup
 
 1. **Clonar el repositorio:**
    ```bash
@@ -181,141 +100,101 @@ Para poner en marcha el proyecto localmente, seguí estos pasos:
    npm install
    ```
 
-5. **Ejecutar el proyecto:**
+5. **Configurar variable de entorno:**
+   ```bash
+   # Crear .env en la raíz con:
+   VITE_API_URL=http://localhost:3000/api
+   ```
+
+6. **Ejecutar el proyecto:**
    ```bash
    npm run dev
    ```
 
-👉 *La app estará disponible en: `http://localhost:5173`*
+> La app estará disponible en `http://localhost:5173`
 
 ---
 
-<img src="https://img.shields.io/badge/RTL-Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white" /> 
-Ejecución de tests
-
-### Ejecutar tests en modo watch
+## Testing
 
 ```bash
+# Modo watch
 npm run test
-```
 
-### Ejecutar tests una sola vez
-
-```bash
+# Una sola ejecución
 npm run test:run
 ```
 
+### Componentes testeados
+
+- Header, Footer, SearchBar
+- GameCard, GameList, GameDetailCard
+- FavoriteButton, NosotrosModal, Home
+
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del proyecto
 
 ```text
 src/
- ├── components/       # Componentes (GameCard, List, SearchBar, etc.)
- ├── pages/            # Vistas (Home, Details, Favorites, NotFound)
- ├── const/            # Definición de rutas (routes.js)
- ├── main.jsx          # Punto de entrada de React
- └── index.css         # Directivas de Tailwind
+ ├── components/
+ │    ├── GameCard/
+ │    ├── GameList/
+ │    ├── GameDetailCard/
+ │    ├── FavoriteButton/
+ │    ├── Header/
+ │    ├── Layout/
+ │    ├── SearchBar/
+ │    ├── PrivateRoute/       # redirige a /login si no hay sesión
+ │    └── PublicRoute/        # redirige al home si ya hay sesión
+ ├── context/
+ │    └── AuthContext.jsx     # estado global: user, token, login, logout
+ ├── pages/
+ │    ├── Home/
+ │    ├── Details/
+ │    ├── Favorites/
+ │    ├── Login/
+ │    ├── Register/
+ │    └── NotFound/
+ ├── services/
+ │    └── gameApi.js          # llamadas a la API (games + auth + favorites)
+ ├── const/
+ │    └── routes.js
+ ├── main.jsx                 # router + AuthProvider
+ └── index.css
 ```
 
 ---
 
-## 🌿 Estrategia de Branches
+## Estrategia de branches
 
-Mantenemos un flujo de trabajo organizado mediante ramas descriptivas:
+| Branch | Propósito |
+| :----- | :-------- |
+| `develop` | Rama base de integración |
+| `feat-*` | Nuevas funcionalidades |
+| `fix-*` | Correcciones |
+| `docs-*` | Documentación |
 
-* `develop` (Rama base de integración)
-* `develop/comp-name` (Desarrollo de componentes)
-* `develop/feat-name` (Nuevas funcionalidades)
+### Flujo de trabajo
 
----
+```bash
+# Actualizar develop antes de empezar
+git checkout develop
+git pull origin develop
 
+# Crear branch para la tarea
+git checkout -b feat-nombre-tarea
 
-## 🚀 Flujo de Trabajo (Git Workflow)
+# Desarrollar, commitear y subir
+git add .
+git commit -m "feat: descripción"
+git push origin feat-nombre-tarea
 
-Para mantener la rama `develop` estable y evitar conflictos (y pagar las pizzas 🍕), seguí estos pasos:
-
-1. **Sincronizar con develop:**
-   ```bash
-   git checkout develop
-   git pull origin develop
-   ```
-
-2. **Crear una nueva rama para tu tarea:**
-   ```bash
-   git checkout -b comp-1-nombrecomp
-   ```
-
-3. **Guardar cambios (commit):**
-   ```bash
-   git add .
-   git commit -m "feat: descripción"
-   ```
-
-4. **Actualizar antes de subir (MUY IMPORTANTE):**
-   ```bash
-   git pull origin develop
-   ```
-
-5. **Subir la rama al repositorio:**
-   ```bash
-   git push origin develop/mi-tarea
-   ```
-
-
----
-
-## 📏 Reglas del Equipo
-
-* ❌ **No push directo a develop:** Todo cambio debe pasar por un Pull Request.
-* ✔ **Aprobación:** Se requiere al menos 1 aprobación para mergear.
-* ✔ **Atomicidad:** Un PR por cada tarea específica.
-* ✔ **Estilos:** Uso obligatorio de **Tailwind CSS**.
-
----
-
-## 💾 Gestión de Favoritos
-
-La persistencia se maneja de forma local para evitar llamadas innecesarias al servidor:
-```javascript
-localStorage.setItem("favorites", JSON.stringify([...]))
+# Abrir Pull Request a develop en GitHub
 ```
 
----
+### Reglas del equipo
 
-## 🚧 Estado del Proyecto
-[x] Setup inicial del proyecto con Vite y Tailwind v4
-
-[x] Configuración de Routing de la SPA
-
-[x] Consumo asincrónico de API REST externa
-
-[x] Listado de juegos interactivo
-
-[x] Vista dinámica de detalles por juego
-
-[x] Sistema persistente de favoritos
-
-[x] Buscador funcional en tiempo real
-
-[x] Soporte de internacionalización multidioma
-
-[x] UI adaptativa (Responsive Design)
-
-[x] Cobertura de tests unitarios y de integración
-
----
-
-📈 Mejoras Futuras
-
-- Incrementar cobertura de testing
-- Incorporar CI automático para Pull Requests
-- Implementar tests E2E
-- Mejorar soporte PWA
----
-
-## 🍕 Nota del PM
-
-> **"Si alguien rompe develop, paga las pizzas."** > Proyecto enfocado en consistencia visual y trabajo colaborativo profesional.
-
----
+- No se hacen commits directos a `develop` — siempre por PR
+- Cada PR necesita al menos una aprobación para mergear
+- Resolver conflictos en la feature branch, no en develop
