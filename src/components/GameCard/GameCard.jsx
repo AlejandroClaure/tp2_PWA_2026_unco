@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { toggleFavorite } from "../../services/gameApi";
+import { addFavoriteGame, removeFavoriteGame } from "../../services/gameApi";
 
 function GameCard({ game, onToggleFavorite }) {
   const { t } = useTranslation();
@@ -10,7 +10,11 @@ function GameCard({ game, onToggleFavorite }) {
   const handleFav = async (e) => {
     e.stopPropagation();
 
-    await toggleFavorite(game.id);
+    if (game.isFavorite) {
+      await removeFavoriteGame(game.id);
+    } else {
+      await addFavoriteGame(game.id);
+    }
 
     if (onToggleFavorite) {
       onToggleFavorite(game.id);

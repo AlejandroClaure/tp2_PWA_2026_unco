@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { getGameById, toggleFavorite } from "../../services/gameApi";
+import { getGameById, getFavoriteGames, addFavoriteGame, removeFavoriteGame } from "../../services/gameApi";
 
 function GameDetailCard({ id }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [game, setGame] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -15,11 +16,20 @@ function GameDetailCard({ id }) {
     getGameById(id)
       .then(setGame)
       .catch(() => navigate("/notfound"));
+
+    getFavoriteGames()
+      .then((favs) => setIsFavorite(favs.some((g) => g.id === id)))
+      .catch(() => {});
   }, [id]);
 
   const handleFav = async () => {
-    const updated = await toggleFavorite(id);
-    setGame(updated);
+    if (isFavorite) {
+      await removeFavoriteGame(id);
+      setIsFavorite(false);
+    } else {
+      await addFavoriteGame(id);
+      setIsFavorite(true);
+    }
   };
 
   if (!game) {
@@ -75,7 +85,7 @@ function GameDetailCard({ id }) {
           <div className="mt-6 flex justify-center">
             <FavoriteButton
               onFav={handleFav}
-              esFavorito={game.isFavorite}
+              esFavorito={isFavorite}
             />
           </div>
         </div>
