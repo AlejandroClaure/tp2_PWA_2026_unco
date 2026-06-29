@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -6,13 +7,16 @@ import { addFavoriteGame, removeFavoriteGame } from "../../services/gameApi";
 function GameCard({ game, onToggleFavorite }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [isFav, setIsFav] = useState(game.isFavorite === true);
 
   const handleFav = async (e) => {
     e.stopPropagation();
 
-    if (game.isFavorite) {
+    if (isFav) {
+      setIsFav(false);
       await removeFavoriteGame(game.id);
     } else {
+      setIsFav(true);
       await addFavoriteGame(game.id);
     }
 
@@ -58,12 +62,12 @@ function GameCard({ game, onToggleFavorite }) {
             onClick={handleFav}
             className="text-red-400 hover:text-red-300 transition-colors"
             aria-label={
-              game.isFavorite
+              isFav
                 ? t("removeFavorite")
                 : t("addFavorite")
             }
           >
-            {game.isFavorite ? (
+            {isFav ? (
               <FaHeart size={16} />
             ) : (
               <FaRegHeart size={16} />
