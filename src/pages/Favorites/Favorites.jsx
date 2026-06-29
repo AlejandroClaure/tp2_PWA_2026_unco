@@ -15,7 +15,7 @@ export default function Favorites() {
     setLoading(true);
 
     getFavoriteGames()
-      .then((data) => setGames(data))
+      .then((data) => setGames(data.map((g) => ({ ...g, isFavorite: true }))))
       .finally(() => setLoading(false));
   }, [refresh]);
 
